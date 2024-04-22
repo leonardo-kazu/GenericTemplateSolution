@@ -1,0 +1,3 @@
+# GenericTemplateSolution.Client
+
+

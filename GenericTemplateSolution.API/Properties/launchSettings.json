@@ -1,0 +1,86 @@
+{
+  "profiles": {
+    "API - HTTP": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5282"
+    },
+    "API - HTTPS": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7248;http://localhost:5282"
+    },
+    "API - Docker": {
+        "commandName": "Executable",
+        "executablePath": "%SHELL%",
+        "commandLineArgs": "./Scripts/%SHELL%/api_docker%SHELL_EXT%",
+        "workingDirectory": "../",
+        "environmentVariables": {
+            "PROJECT_NAME": "%PROJECT_NAME%",
+            "DOCKERFILE_PATH_API": "./%PROJECT_NAME%.API/Dockerfile.dev",
+            "EXTRA_ARGS_BUILD_API": "",
+            "EXTRA_ARGS_RUN_API": "-p 8080:8080 -p 8081:8081",
+            "DEV": "true"
+        }
+    },
+    "Client - HTTP": {
+        "commandName": "Executable",
+        "executablePath": "%SHELL%",
+        "commandLineArgs": "./Scripts/%SHELL%/client_http%SHELL_EXT%",
+        "workingDirectory": "../",
+        "environmentVariables": {
+            "PROJECT_NAME": "%PROJECT_NAME%"
+        }
+    },
+    "Client - Docker": {
+        "commandName": "Executable",
+        "executablePath": "%SHELL%",
+        "commandLineArgs": "./Scripts/%SHELL%/client_docker%SHELL_EXT%",
+        "workingDirectory": "../",
+        "environmentVariables": {
+            "PROJECT_NAME": "%PROJECT_NAME%",
+            "DOCKERFILE_PATH_CLIENT": "./%PROJECT_NAME%.Client/Dockerfile.dev",
+            "EXTRA_ARGS_BUILD_CLIENT": "",
+            "EXTRA_ARGS_RUN_CLIENT": "-p 3000:3000",
+            "DEV": "true"
+        }
+    },
+    "Client + API - HTTP": {
+        "commandName": "Executable",
+        "executablePath": "%SHELL%",
+        "commandLineArgs": "./Scripts/%SHELL%/client_api_http%SHELL_EXT%",
+        "workingDirectory": "../",
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "PROJECT_NAME": "%PROJECT_NAME%"
+        }
+    },
+    "Client + API - Docker": {
+      "commandName": "Executable",
+      "executablePath": "%SHELL%",
+      "commandLineArgs": "./Scripts/%SHELL%/client_api_docker%SHELL_EXT%",
+        "workingDirectory": "../",
+        "environmentVariables": {
+            "PROJECT_NAME": "%PROJECT_NAME%",
+            "DOCKERFILE_PATH_API": "./%PROJECT_NAME%.API/Dockerfile.dev",
+            "DOCKERFILE_PATH_CLIENT": "./%PROJECT_NAME%.Client/Dockerfile.dev",
+            "EXTRA_ARGS_BUILD_API": "",
+            "EXTRA_ARGS_RUN_API": "-p 8080:8080 -p 8081:8081",
+            "EXTRA_ARGS_BUILD_CLIENT": "",
+            "EXTRA_ARGS_RUN_CLIENT": "-p 3000:3000",
+            "DEV": "true"
+        }
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json"
+}
